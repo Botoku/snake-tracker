@@ -1,6 +1,7 @@
 "use client";
 import { snakeSpeciesEN } from "@/lib/animalInfo/species";
 import { sessionInfo } from "@/lib/sign-up";
+import { useUserInfoStore } from "@/lib/Store";
 import React, { useEffect, useState } from "react";
 
 type AnimalFormData = {
@@ -11,7 +12,7 @@ type AnimalFormData = {
   date_of_birth: string;
   acquisition_date: string;
   notes: string;
-  owner_ids:(string | undefined)[]
+  owner_ids: (string | undefined)[];
 };
 
 const initialState: AnimalFormData = {
@@ -22,26 +23,20 @@ const initialState: AnimalFormData = {
   date_of_birth: "",
   acquisition_date: "",
   notes: "",
-  owner_ids: []
-  
+  owner_ids: [],
 };
 const RegisterSnakeForm = () => {
   const [formData, setFormData] = useState(initialState);
   const sexOptions = ["male", "female", "unknown"];
-  console.log(process.env.NEXT_PUBLIC_BACKEND_URL!, "backend");
-  useEffect(() =>{
-    const sessionFetch = async () => {
-        const {session} = await sessionInfo()
 
-        setFormData({...formData, owner_ids: [session?.user.id]})
-    } 
-
-    sessionFetch()
-  },[])
+  const user = useUserInfoStore((state) => state.user);
+  console.log(user)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
+    setFormData({ ...formData, owner_ids: [user?.id] });
+
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL!}/snakes`,

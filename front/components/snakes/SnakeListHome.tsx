@@ -1,5 +1,5 @@
 import RegisterSnake from './RegisterSnake'
-import { authClient } from '@/lib/auth-client'
+import SnakeList from './SnakeList'
 
 const SnakeListHome = async () => {
 //   const session = await authClient.api.getSession({
@@ -11,7 +11,7 @@ const SnakeListHome = async () => {
       {/* Button/from to create new cnake entry */}
       <RegisterSnake />
       {/* Display list of all snakes registered and button to update entries such as weight and height  */}
-      
+      <SnakeList />
       </div>
   )
 }
