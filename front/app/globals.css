@@ -1,23 +1,86 @@
 @import "tailwindcss";
 
+/* colombian:  */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --background: #ffffff;
+  --foreground: #171717; */
+  --primary-900: #2b1d0e;
+  --primary-800: #5c3a1a;
+  --primary-600: #9c6b35;
+  --primary-400: #c4924e;
+  --primary-200: #d9b882;
+  --primary-100: #edd8b0;
+}
+
+[data-theme="argentine"] {
+  --primary-900: #1a1a1e;
+  --primary-800: #3b3b44;
+  --primary-600: #6e6e7a;
+  --primary-400: #a8a8b8;
+  --primary-200: #d0d0dc;
+  --primary-100: #f0f0f4;
+}
+[data-theme="sonoran"] {
+  --primary-900: #6B5A3A;
+  --primary-800: #9E8558;
+  --primary-600: #C4AA7A;
+  --primary-400: #D8C49A;
+  --primary-200: #EAD9BC;
+  --primary-100: #F5EDD8;
+}
+[data-theme="albino"] {
+  --primary-900: #D44820;
+  --primary-800: #E87840;
+  --primary-600: #F4A060;
+  --primary-400: #F8CC98;
+  --primary-200: #FCE8C8;
+  --primary-100: #FFF6EE;
+}
+[data-theme="anery"] {
+  --primary-900: #141414;
+  --primary-800: #303030;
+  --primary-600: #585858;
+  --primary-400: #8C8C8C;
+  --primary-200: #C0C0C0;
+  --primary-100: #ECECEC;
+}
+[data-theme="moonglow"] {
+  --primary-900: #D8D8E8;
+  --primary-800: #E4E4F0;
+  --primary-600: #EEEEF8;
+  --primary-400: #F5F5FC;
+  --primary-200: #FAF9FF;
+  --primary-100: #FFFFFF;
+}
+[data-theme="salmon"] {
+  --primary-900: #8C3A28;
+  --primary-800: #C46850;
+  --primary-600: #D89070;
+  --primary-400: #EAB898;
+  --primary-200: #F4D4BE;
+  --primary-100: #FCEEE6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary-900: var(--primary-900);
+  --color-primary-800: var(--primary-800);
+  --color-primary-600: var(--primary-600);
+  --color-primary-400: var(--primary-400);
+  --color-primary-200: var(--primary-200);
+  --color-primary-100: var(--primary-100);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);

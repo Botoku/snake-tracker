@@ -31,7 +31,7 @@ const SnakeList = () => {
   if (loading) return <div>Loading...</div>;
   console.log(snakes);
   return (
-    <div>
+    <div className="bg-primary-900 text-primary-100">
       {snakes?.map((snake) => (
         <div key={snake.id}>
           <p>{snake.name}</p>
