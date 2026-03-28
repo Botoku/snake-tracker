@@ -1,10 +1,20 @@
 "use client";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const ThemeChanger = () => {
+const ThemeChanger = () => {
   const { theme, setTheme } = useTheme();
   const [isActive, setIsActive] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+
+//   useEffect(() => {
+//     setMounted(true);
+//   }, []);
+
+  if (!theme) {
+    return null;
+  }
 
   return (
     <div>
@@ -22,3 +32,5 @@ export const ThemeChanger = () => {
     </div>
   );
 };
+
+export default ThemeChanger
