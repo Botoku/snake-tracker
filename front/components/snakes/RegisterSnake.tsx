@@ -23,8 +23,7 @@ const RegisterSnake = () => {
       {activeForm && (
         <>
           <div>
-            <p>Animal Registry</p>
-            <p>Add New Animal</p>
+            <p className="text-3xl text-center mb-4">SPECIMEN REGISTRATION</p>
           </div>
           <RegisterSnakeForm />
         </>

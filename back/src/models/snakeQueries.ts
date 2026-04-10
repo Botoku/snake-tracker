@@ -10,7 +10,7 @@ export interface Snake {
 async function createSnakeEntry(data) {
   console.log(data, "data.body query")
   const {
-    user_id,
+    owner_ids,
     name,
     species,
     morph,
@@ -28,7 +28,7 @@ async function createSnakeEntry(data) {
     RETURNING *
     `,
       [
-        [user_id],
+        owner_ids,
         name,
         species,
         morph,
