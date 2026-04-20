@@ -6,7 +6,7 @@ import helmet from 'helmet'
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth.ts";
 import routes from "./routes/index.ts";
-import { createSnakeTable } from "./models/snakeQueries.ts";
+import { createFeedingTable, createSnakeTable } from "./models/snakeTables.ts";
 
 
 dotenv.config();
@@ -46,6 +46,7 @@ app.use((req, res) => {
 
 // console.log(client)
 createSnakeTable()
+createFeedingTable()
 // app.listen(port, () => {
 //   console.log("Hello from snake app");
 // });

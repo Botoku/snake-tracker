@@ -1,6 +1,7 @@
 "use client";
 import { useUserInfoStore } from "@/lib/Store";
 import { Snake } from "@/lib/types";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const SnakeList = () => {
@@ -33,9 +34,9 @@ const SnakeList = () => {
   return (
     <div className="bg-primary-900 text-primary-100">
       {snakes?.map((snake) => (
-        <div key={snake.id}>
+        <Link href={`/snake/${snake.id}`} key={snake.id}>
           <p>{snake.name}</p>
-        </div>
+        </Link>
       ))}
     </div>
   );

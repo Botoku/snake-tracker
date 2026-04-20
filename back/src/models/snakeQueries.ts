@@ -6,6 +6,8 @@ export interface Snake {
   species?: string;
 }
 
+
+// SNAKE REGISTRATION
 // const SnakeModel = {
 async function createSnakeEntry(data) {
   console.log(data, "data.body query")
@@ -46,31 +48,7 @@ async function createSnakeEntry(data) {
 }
 // };
 
-async function createSnakeTable() {
-  const createSnakeQuery = `
-    CREATE TABLE IF NOT EXISTS snakes(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    owner_ids VARCHAR(255)[],
-    species VARCHAR(100),
-    morph VARCHAR(100),
-    sex VARCHAR(20),
-    date_of_birth DATE,
-    acquisition_date DATE,
-    notes TEXT,
-    created_at TIMESTAMP DEFAULT NOW(),
-    updated_at TIMESTAMP DEFAULT NOW()
-    )
-    `;
 
-  try {
-    // const res = await client()
-    const rows = await query(createSnakeQuery);
-    return rows;
-  } catch (error) {
-    console.log("Error creating snake table");
-  }
-}
 
 async function findSnakeByOwnerId(id: string): Promise<any> {
   const findSnakeQuery = `
@@ -85,4 +63,5 @@ async function findSnakeByOwnerId(id: string): Promise<any> {
   }
 }
 
-export { createSnakeTable, findSnakeByOwnerId, createSnakeEntry };
+
+export {  findSnakeByOwnerId, createSnakeEntry };
