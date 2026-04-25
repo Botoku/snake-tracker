@@ -3,8 +3,7 @@ import React from 'react'
 import { useParams } from 'next/navigation'
 
 const SnakePage = () => {
-    const params = useParams<{ 'snake-id': string;  }>()
-    console.log(params['snake-id'])
+    const params = useParams<{ 'snake-id': string[];  }>()
   return (
     <div>SnakePage</div>
   )

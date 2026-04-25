@@ -35,6 +35,7 @@ async function createFeedingTable(){
         prey_type VARCHAR(100),
         prey_size VARCHAR(50),
         quantity INTEGER DEFAULT 1,
+        acceptance BOOLEAN, 
         notes TEXT,
         created_at TIMESTAMP DEFAULT NOW()
 

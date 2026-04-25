@@ -8,7 +8,7 @@ const SnakeListHome = async () => {
   // const response = await fetch(`${process.env.BACKEND_URL}/snakes/${}`)
   return (
     <div className='bg-primary-900 text-primary-100'>
-      {/* Button/from to create new cnake entry */}
+      {/* Button/from to create new snake entry */}
       <RegisterSnake />
       {/* Display list of all snakes registered and button to update entries such as weight and height  */}
       <SnakeList />
