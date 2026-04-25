@@ -2,7 +2,6 @@ import { query } from "../config/db.ts";
 
 async function createFeedingEntry(data) {
   const {
-    id,
     snake_id,
     feeding_date,
     prey_type,
@@ -34,6 +33,7 @@ async function createFeedingEntry(data) {
     return results[0];
   } catch (error) {
     console.log(error);
+    throw error
   }
 }
 
