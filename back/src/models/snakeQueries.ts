@@ -60,7 +60,7 @@ async function findSnakeByOwnerId(id: string): Promise<any> {
     return result;
   } catch (error) {
     console.log("Error fetching snake");
-  }
+  } 
 }
 
 
