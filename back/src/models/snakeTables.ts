@@ -22,7 +22,8 @@ async function createSnakeTable() {
     const rows = await query(createSnakeQuery);
     return rows;
   } catch (error) {
-    console.log("Error creating snake table");
+    console.error("Error creating snake table", error);
+    throw error
   }
 }
 
@@ -34,6 +35,8 @@ async function createFeedingTable(){
         feeding_date DATE NOT NULL,
         prey_type VARCHAR(100),
         prey_size VARCHAR(50),
+        prey_weight VARCHAR(50),
+        prey_frozen VARCHAR(50),
         quantity INTEGER DEFAULT 1,
         acceptance BOOLEAN, 
         notes TEXT,
@@ -46,7 +49,8 @@ async function createFeedingTable(){
         const rows = await query(createFeedingQuery)
         return rows
     } catch (error) {
-        console.log('Error creating feeding table')
+        console.error('Error creating feeding table', error)
+        throw error
     }
 }
 

@@ -26,7 +26,6 @@ const ThemeChanger = () => {
         <button onClick={() => setTheme("albino")}>albino</button>
         <button onClick={() => setTheme("sonoran")}>sonoran</button>
         <button onClick={() => setTheme("anery")}>anery</button>
-        <button onClick={() => setTheme("moonglow")}>moonglow</button>
         <button onClick={() => setTheme("salmon")}>salmon</button>
       </div>
     </div>

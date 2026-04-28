@@ -8,11 +8,11 @@ export type Snake = {
   acquisition_date: string;
   created_at: string;
   date_of_birth: string;
-  id: 4;
+  id: number;
   morph: string;
   name: string;
   notes: string;
-  owner_ids: [];
+  owner_ids: string[];
   sex: string;
   species: string;
   updated_at: string;

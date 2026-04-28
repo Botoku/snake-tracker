@@ -8,7 +8,6 @@ import { createFeedingEntry, findAllFeedingEntries } from "../models/feedingQuer
 
 const getAllSnakeByOwnerId: RequestHandler = async (req, res, next) => {
   const ownerId = req.params.ownerId;
-  console.log(ownerId, "ownderID");
   try {
     const snakes = await findSnakeByOwnerId(ownerId);
     console.log(snakes);
