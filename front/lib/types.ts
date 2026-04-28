@@ -17,3 +17,10 @@ export type Snake = {
   species: string;
   updated_at: string;
 };
+
+export type Feeding = {
+  id: string;
+  feeding_date: string;
+  prey_type: string;
+  prey_size: string;
+};

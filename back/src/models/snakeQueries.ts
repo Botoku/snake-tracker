@@ -1,15 +1,16 @@
 import { query } from "../config/db.ts";
-export interface Snake {
-  id: number;
-  user_id: string;
-  name: string;
-  species?: string;
-}
+import { Snake } from "../lib/types.ts";
+// export interface Snake {
+//   id: number;
+//   user_id: string;
+//   name: string;
+//   species?: string;
+// }
 
 
 // SNAKE REGISTRATION
 // const SnakeModel = {
-async function createSnakeEntry(data) {
+async function createSnakeEntry(data:Snake) {
   console.log(data, "data.body query")
   const {
     owner_ids,

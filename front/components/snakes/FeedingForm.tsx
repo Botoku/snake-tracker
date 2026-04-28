@@ -9,6 +9,7 @@ const FeedingForm = () => {
     prey_type: "",
     prey_size: "",
     prey_weight: "",
+    prey_frozen: "",
     quantity: 1,
     acceptance: true,
     notes: "",
@@ -69,9 +70,9 @@ const FeedingForm = () => {
               <div className="bg-primary-200 p-3 rounded-lg my-2">
                 <label htmlFor="">Prey Status</label>
                 <ul>
-                  <li>Frozen/Thawed</li>
-                  <li>Live</li>
-                  <li>Fresh Killed</li>
+                  <li onClick={()=> setFeedingInfo(prev=>({...prev, prey_frozen: 'frozen_thawed' }))}>Frozen/Thawed</li>
+                  <li onClick={()=> setFeedingInfo(prev=>({...prev, prey_frozen: 'live' }))}>Live</li>
+                  <li onClick={()=> setFeedingInfo(prev=>({...prev, prey_frozen: 'freshly_killed' }))}>Fresh Killed</li>
                 </ul>
               </div>
             </div>

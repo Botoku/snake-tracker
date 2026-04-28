@@ -2,9 +2,11 @@ import type { RequestHandler } from "express";
 import {
   createSnakeEntry,
   findSnakeByOwnerId,
-  
 } from "../models/snakeQueries.ts";
-import { createFeedingEntry, findAllFeedingEntries } from "../models/feedingQueries.ts";
+import {
+  createFeedingEntry,
+  findAllFeedingEntries,
+} from "../models/feedingQueries.ts";
 
 const getAllSnakeByOwnerId: RequestHandler = async (req, res, next) => {
   const ownerId = req.params.ownerId;
@@ -13,7 +15,7 @@ const getAllSnakeByOwnerId: RequestHandler = async (req, res, next) => {
     console.log(snakes);
     res.status(200).json(snakes);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     next(error);
   }
 };
@@ -51,8 +53,17 @@ const createSnake: RequestHandler = async (req, res, next) => {
 
 const createFeeding: RequestHandler = async (req, res, next) => {
   try {
-    const { snake_id, feeding_date, prey_type, prey_size, quantity, notes } =
-      req.body;
+    const {
+      snake_id,
+      feeding_date,
+      prey_type,
+      prey_size,
+      quantity,
+      notes,
+      prey_weight,
+      prey_frozen,
+      acceptance,
+    } = req.body;
     const result = await createFeedingEntry({
       snake_id,
       feeding_date,
@@ -60,26 +71,34 @@ const createFeeding: RequestHandler = async (req, res, next) => {
       prey_size,
       quantity,
       notes,
+      prey_weight,
+      prey_frozen,
+      acceptance,
     });
-    console.log(result)
-    res.status(201).json(result)
+    console.log(result);
+    res.status(201).json(result);
   } catch (error) {
     console.log(error);
     next(error);
   }
 };
 
-const getAllSnakeFeedings: RequestHandler = async (req, res ,next) => {
-  const snakeId = req.params.snakeId
-  console.log(snakeId)
+const getAllSnakeFeedings: RequestHandler = async (req, res, next) => {
+  const snakeId = req.params.snakeId;
+  console.log(snakeId);
   try {
-    const feedings = await findAllFeedingEntries(snakeId)
-    console.log(feedings)
-    res.status(200).json(feedings)
+    const feedings = await findAllFeedingEntries(snakeId);
+    console.log(feedings);
+    res.status(200).json(feedings);
   } catch (error) {
-    console.log(error)
-    next(error)
+    console.log(error);
+    next(error);
   }
-}
+};
 
-export { getAllSnakeByOwnerId, createSnake,createFeeding, getAllSnakeFeedings };
+export {
+  getAllSnakeByOwnerId,
+  createSnake,
+  createFeeding,
+  getAllSnakeFeedings,
+};

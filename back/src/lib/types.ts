@@ -9,3 +9,14 @@ export type Feeding = {
   acceptance: string;
   notes: string;
 };
+
+export type Snake = {
+  owner_ids: string[];
+  name: string;
+  species: string;
+  morph: string;
+  sex: string;
+  date_of_birth: string;
+  acquisition_date: string;
+  notes: string;
+};

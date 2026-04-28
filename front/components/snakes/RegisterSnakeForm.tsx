@@ -2,7 +2,7 @@
 import { snakeSpeciesEN } from "@/lib/animalInfo/species";
 // import { sessionInfo } from "@/lib/sign-up";
 import { useUserInfoStore } from "@/lib/Store";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 type AnimalFormData = {
   name: string;
@@ -12,14 +12,13 @@ type AnimalFormData = {
   date_of_birth: string;
   acquisition_date: string;
   notes: string;
-  owner_ids: (string)[];
+  owner_ids: string[];
 };
-
 
 const RegisterSnakeForm = () => {
   const user = useUserInfoStore((state) => state.user);
   const sexOptions = ["male", "female", "unknown"];
-  
+
   const initialState: AnimalFormData = {
     name: "",
     species: "",
@@ -28,21 +27,16 @@ const RegisterSnakeForm = () => {
     date_of_birth: "",
     acquisition_date: "",
     notes: "",
-    owner_ids: [user?.id],
+    owner_ids: user?.id ? [user.id] : [],
   };
-  console.log(initialState)
   const [formData, setFormData] = useState(initialState);
-  
-  console.log(user);
-  
-  
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // setFormData({ ...formData, owner_ids: [user?.id] });
     console.log(formData);
 
-
-    console.log('submitting')
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL!}/snakes`,
@@ -93,7 +87,12 @@ const RegisterSnakeForm = () => {
             </div>
             <div>
               <label htmlFor="species">Species</label>
-              <select name="species" id="species" value={formData.species} onChange={handleChange}>
+              <select
+                name="species"
+                id="species"
+                value={formData.species}
+                onChange={handleChange}
+              >
                 <option value="">Select species</option>
                 {snakeSpeciesEN.map((s, i) => (
                   <option key={i} value={s}>
@@ -127,7 +126,12 @@ const RegisterSnakeForm = () => {
           </div>
           <div className="mt-5">
             <label htmlFor="sex">Sex</label>
-            <select onChange={handleChange} value={formData.sex} name="sex" id="sex">
+            <select
+              onChange={handleChange}
+              value={formData.sex}
+              name="sex"
+              id="sex"
+            >
               <option value="">Select Sex</option>
               {sexOptions.map((opt) => (
                 <option value={opt} key={opt}>
@@ -142,7 +146,7 @@ const RegisterSnakeForm = () => {
             <label htmlFor="morph">Morph</label>
             <input
               type="text"
-              id='morph'
+              id="morph"
               name="morph"
               placeholder="Albino Khal"
               onChange={handleChange}
@@ -163,8 +167,19 @@ const RegisterSnakeForm = () => {
         </div>
 
         <div>
-          <button className="bg-primary-600 mr-4 text-black px-2 py-1 cursor-pointer" type="submit">Save New Snake</button>
-          <button className="bg-primary-200 mr-4 text-black px-2 py-1 cursor-pointer" type='button' onClick={handleReset}>Reset</button>
+          <button
+            className="bg-primary-600 mr-4 text-black px-2 py-1 cursor-pointer"
+            type="submit"
+          >
+            Save New Snake
+          </button>
+          <button
+            className="bg-primary-200 mr-4 text-black px-2 py-1 cursor-pointer"
+            type="button"
+            onClick={handleReset}
+          >
+            Reset
+          </button>
         </div>
       </form>
 
