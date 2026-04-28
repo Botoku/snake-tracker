@@ -1,5 +1,5 @@
 import { query } from "../config/db.ts";
-import { Snake } from "../lib/types.ts";
+import type { Snake } from "../lib/types.ts";
 // export interface Snake {
 //   id: number;
 //   user_id: string;

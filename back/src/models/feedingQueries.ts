@@ -1,5 +1,5 @@
 import { query } from "../config/db.ts";
-import { Feeding } from "../lib/types.ts";
+import type { Feeding } from "../lib/types.ts";
 
 async function createFeedingEntry(data: Feeding) {
   const {

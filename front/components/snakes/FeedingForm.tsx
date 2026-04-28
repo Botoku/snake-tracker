@@ -11,7 +11,7 @@ const FeedingForm = () => {
     prey_weight: "",
     prey_frozen: "",
     quantity: 1,
-    acceptance: true,
+    acceptance: '',
     notes: "",
   };
   const [activeForm, setActiveForm] = useState(false);
@@ -81,14 +81,14 @@ const FeedingForm = () => {
           <div className="bg-primary-100 p-3 rounded-lg my-2">
             <label htmlFor="">Feeding Response</label>
             <div>
-              <p>Accepted</p>
-              <p>Refused</p>
-              <p>Regurgitated</p>
+              <p onClick={() => setFeedingInfo(prev=> ({...prev,acceptance: 'accepted' }))}>Accepted</p>
+              <p onClick={() => setFeedingInfo(prev=> ({...prev,acceptance: 'refused' }))}>Refused</p>
+              <p onClick={() => setFeedingInfo(prev=> ({...prev,acceptance: 'regurgitated' }))}>Regurgitated</p>
             </div>
           </div>
           <div className="bg-primary-100 p-3 rounded-lg my-2">
             <label htmlFor="notes">Feeding Notes</label>
-            <input type="text" />
+            <input type="text" value={feedingInfo.notes} onChange={(e) => setFeedingInfo(prev=> ({...prev, notes: e.target.value }))} />
           </div>
         </form>
       )}

@@ -38,7 +38,7 @@ async function createFeedingTable(){
         prey_weight VARCHAR(50),
         prey_frozen VARCHAR(50),
         quantity INTEGER DEFAULT 1,
-        acceptance BOOLEAN, 
+        acceptance VARCHAR(50), 
         notes TEXT,
         created_at TIMESTAMP DEFAULT NOW()
 
