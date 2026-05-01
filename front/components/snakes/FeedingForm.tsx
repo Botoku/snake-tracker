@@ -25,22 +25,25 @@ const FeedingForm = () => {
     e.preventDefault();
     setFeedingInfo((prev) => ({ ...prev, snake_id: snakeId }));
     console.log(feedingInfo);
+    const payload = { ...feedingInfo, snake_id: snakeId };
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL!}/snakes/feedings/${snakeId}`,
         {
-            method: 'POST',
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify(feedingInfo)
-        }
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        },
       );
+      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
 
       const data = await response.json();
-      console.log(data)
+      console.log(data);
     } catch (error) {
-        console.log(error)
+      console.error(error);
+      // TODO: Add userfacing error feedback
     }
   };
   return (
@@ -119,35 +122,57 @@ const FeedingForm = () => {
               <div className="bg-primary-200 p-3 rounded-lg my-2">
                 <label htmlFor="">Prey Status</label>
                 <ul>
-                  <li
-                    onClick={() =>
-                      setFeedingInfo((prev) => ({
-                        ...prev,
-                        prey_frozen: "frozen_thawed",
-                      }))
-                    }
-                  >
-                    Frozen/Thawed
+                  <li>
+                    <button
+                      onClick={() =>
+                        setFeedingInfo((prev) => ({
+                          ...prev,
+                          prey_frozen: "frozen_thawed",
+                        }))
+                      }
+                      className={
+                        feedingInfo.prey_frozen === "frozen_thawed"
+                          ? "selected"
+                          : ""
+                      }
+                      type="button"
+                    >
+                      Frozen/Thawed
+                    </button>
                   </li>
-                  <li
-                    onClick={() =>
-                      setFeedingInfo((prev) => ({
-                        ...prev,
-                        prey_frozen: "live",
-                      }))
-                    }
-                  >
-                    Live
+                  <li>
+                    <button
+                      onClick={() =>
+                        setFeedingInfo((prev) => ({
+                          ...prev,
+                          prey_frozen: "live",
+                        }))
+                      }
+                      className={
+                        feedingInfo.prey_frozen === "live" ? "selected" : ""
+                      }
+                      type="button"
+                    >
+                      Live
+                    </button>
                   </li>
-                  <li
-                    onClick={() =>
-                      setFeedingInfo((prev) => ({
-                        ...prev,
-                        prey_frozen: "freshly_killed",
-                      }))
-                    }
-                  >
-                    Fresh Killed
+                  <li>
+                    <button
+                      onClick={() =>
+                        setFeedingInfo((prev) => ({
+                          ...prev,
+                          prey_frozen: "freshly_killed",
+                        }))
+                      }
+                      className={
+                        feedingInfo.prey_frozen === "freshly_killed"
+                          ? "selected"
+                          : ""
+                      }
+                      type="button"
+                    >
+                      Fresh Killed
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -157,7 +182,8 @@ const FeedingForm = () => {
           <div className="bg-primary-100 p-3 rounded-lg my-2">
             <label htmlFor="">Feeding Response</label>
             <div>
-              <p
+              <button
+                type="button"
                 onClick={() =>
                   setFeedingInfo((prev) => ({
                     ...prev,
@@ -166,15 +192,17 @@ const FeedingForm = () => {
                 }
               >
                 Accepted
-              </p>
-              <p
+              </button>
+              <button
+                type="button"
                 onClick={() =>
                   setFeedingInfo((prev) => ({ ...prev, acceptance: "refused" }))
                 }
               >
                 Refused
-              </p>
-              <p
+              </button>
+              <button
+                type="button"
                 onClick={() =>
                   setFeedingInfo((prev) => ({
                     ...prev,
@@ -183,7 +211,7 @@ const FeedingForm = () => {
                 }
               >
                 Regurgitated
-              </p>
+              </button>
             </div>
           </div>
           <div className="bg-primary-100 p-3 rounded-lg my-2">

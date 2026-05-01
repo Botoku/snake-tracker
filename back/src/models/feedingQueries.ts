@@ -51,6 +51,7 @@ async function findAllFeedingEntries(id: string) {
     return result;
   } catch (error) {
     console.log(error, "Error fetching feedings");
+    throw error
   }
 }
 export { createFeedingEntry, findAllFeedingEntries };
