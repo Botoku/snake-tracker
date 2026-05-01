@@ -1,6 +1,7 @@
 import React from "react";
 import { FoodSVG, RegurgitationSVG, RejectedSVG } from "../general-ui/SVG";
 import { Feeding } from "@/lib/types";
+import { daysAgo } from "@/lib/dateFormatter";
 
 const SnakeFeedingLogs = ({
   feedingData,
@@ -10,6 +11,11 @@ const SnakeFeedingLogs = ({
   return (
     <div>
       <p className="my-3 text-2xl">Recent Activity</p>
+      <div className="bg-primary-100">
+        <p>Last Fed</p>
+        <p>{feedingData && daysAgo(feedingData[feedingData.length - 1]?.feeding_date)}</p>
+
+      </div>
       {feedingData &&
         feedingData.map((feed, i) => (
           <div

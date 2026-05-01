@@ -1,4 +1,4 @@
-import { dateFormatter } from "@/lib/dateFormatter";
+import { age, dateFormatter } from "@/lib/dateFormatter";
 import { Snake } from "@/lib/types";
 import React from "react";
 
@@ -24,7 +24,7 @@ const SnakePageInfoHero = ({ info }: { info: Snake | null }) => {
         </div>
         <div className="bg-primary-100 p-2 rounded-lg w-1/4">
           <p className="text-xs uppercase">Born</p>
-          <p>{info && dateFormatter.format(new Date(info.date_of_birth))}</p>
+          <p>{info && dateFormatter.format(new Date(info.date_of_birth))} age:{info && age(info.date_of_birth)}</p>
         </div>
       </div>
     </div>
