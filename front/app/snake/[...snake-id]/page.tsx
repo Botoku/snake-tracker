@@ -8,6 +8,8 @@ import {
   RegurgitationSVG,
   RejectedSVG,
 } from "@/components/general-ui/SVG";
+import SnakePageInfoHero from "@/components/snakes/SnakePageInfoHero";
+import SnakeFeedingLogs from "@/components/snakes/SnakeFeedingLogs";
 
 const SnakePage = () => {
   const params = useParams<{ "snake-id": string[] }>();
@@ -49,25 +51,11 @@ const SnakePage = () => {
   }, [snakeId]);
 
   return (
-    <div>
-      <p>Recent Activity for {snakeInfo?.name}</p>
+    <div className="w-[90%] mx-auto pt-4">
+      {/* TODO: ADD functionality for uploading and displaying images */}
+      <SnakePageInfoHero info={snakeInfo || null} />
       <FeedingForm />
-      <div>
-        <p className="my-3">Recent Logs</p>
-        {feedingData &&
-          feedingData.map((feed, i) => (
-            <div className={`my-3 flex gap-4 ${i % 2 ===0 ? 'bg-primary-100' : 'bg-white'}`}  key={feed.id}>
-              <div>
-                {feed.acceptance === "accepted" && FoodSVG}
-                {feed.acceptance === "refused" && RejectedSVG}
-                {feed.acceptance === "regurgitated" && RegurgitationSVG}
-              </div>
-              <p>{new Date(feed.feeding_date).toDateString()}</p>
-              <p>{feed.prey_type}</p>
-              <p>{feed.prey_size}</p>
-            </div>
-          ))}
-      </div>
+      <SnakeFeedingLogs feedingData={feedingData} />
     </div>
   );
 };

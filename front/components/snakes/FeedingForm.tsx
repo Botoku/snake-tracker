@@ -19,7 +19,7 @@ const FeedingForm = () => {
   const [feedingInfo, setFeedingInfo] = useState(initialState);
 
   const params = useParams<{ "snake-id": string[] }>();
-  const snakeId = params["snake-id"].toLocaleString();
+  const snakeId = params["snake-id"][0]
 
 
   const handleSubmit = async (e: React.FormEvent) => {
