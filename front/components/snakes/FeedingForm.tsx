@@ -1,7 +1,7 @@
 "use client";
 import { preyItemDetails } from "@/lib/animalInfo/snakeDetails";
 import { useParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const FeedingForm = () => {
   const initialState = {
@@ -21,10 +21,10 @@ const FeedingForm = () => {
   const params = useParams<{ "snake-id": string[] }>();
   const snakeId = params["snake-id"].toLocaleString();
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFeedingInfo((prev) => ({ ...prev, snake_id: snakeId }));
-    console.log(feedingInfo);
+
     const payload = { ...feedingInfo, snake_id: snakeId };
     try {
       const response = await fetch(

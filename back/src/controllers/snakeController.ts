@@ -2,6 +2,7 @@ import type { RequestHandler } from "express";
 import {
   createSnakeEntry,
   findSnakeByOwnerId,
+  getSnakeInfoQuery,
 } from "../models/snakeQueries.ts";
 import {
   createFeedingEntry,
@@ -88,7 +89,6 @@ const getAllSnakeFeedings: RequestHandler = async (req, res, next) => {
   console.log(snakeId);
   try {
     const feedings = await findAllFeedingEntries(snakeId);
-    console.log(feedings);
     res.status(200).json(feedings);
   } catch (error) {
     console.log(error);
@@ -96,9 +96,22 @@ const getAllSnakeFeedings: RequestHandler = async (req, res, next) => {
   }
 };
 
+const getSnakeInfo: RequestHandler = async (req, res,next) => {
+  const snakeId = req.params.snakeId
+  try {
+    const snakeInfo = await getSnakeInfoQuery(snakeId)
+    res.status(200).json(snakeInfo)
+
+  } catch (error) {
+    console.log(error)
+    next(error)
+  }
+}
+
 export {
   getAllSnakeByOwnerId,
   createSnake,
   createFeeding,
   getAllSnakeFeedings,
+  getSnakeInfo
 };

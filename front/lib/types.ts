@@ -19,8 +19,17 @@ export type Snake = {
 };
 
 export type Feeding = {
-  id: string;
+  id: number;
   feeding_date: string;
   prey_type: string;
   prey_size: string;
+
+  acceptance: string;
+  created_at: string;
+  notes?: string;
+  prey_frozen: string;
+
+  prey_weight: string;
+  quantity: number;
+  snake_id: string;
 };

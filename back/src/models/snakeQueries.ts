@@ -7,11 +7,10 @@ import type { Snake } from "../lib/types.ts";
 //   species?: string;
 // }
 
-
 // SNAKE REGISTRATION
 // const SnakeModel = {
-async function createSnakeEntry(data:Snake) {
-  console.log(data, "data.body query")
+async function createSnakeEntry(data: Snake) {
+  console.log(data, "data.body query");
   const {
     owner_ids,
     name,
@@ -44,12 +43,10 @@ async function createSnakeEntry(data:Snake) {
 
     return results[0];
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 // };
-
-
 
 async function findSnakeByOwnerId(id: string): Promise<any> {
   const findSnakeQuery = `
@@ -61,8 +58,26 @@ async function findSnakeByOwnerId(id: string): Promise<any> {
     return result;
   } catch (error) {
     console.log("Error fetching snake");
-  } 
+  }
 }
 
+async function getSnakeInfoQuery(id:string): Promise<any> {
+  const snakeID = id
+  if (!snakeID) throw new Error("snakeid is required");
+  console.log(snakeID);
+  const findIndividualSnakeQuery = `
+    SELECT * FROM snakes WHERE id = $1
+  `;
 
-export {  findSnakeByOwnerId, createSnakeEntry };
+  try {
+    const result = await query(findIndividualSnakeQuery, [snakeID]);
+    console.log(result);
+    return result[0] ?? null;
+  } catch (error) {
+    console.error("Error getting snake info");
+    throw(error);
+
+  }
+}
+
+export { findSnakeByOwnerId, createSnakeEntry, getSnakeInfoQuery };
