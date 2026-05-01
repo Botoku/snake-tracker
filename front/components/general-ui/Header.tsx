@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 const ThemeChanger = dynamic(() => import("./ThemeChanger"), { ssr: false });
 const Header = () => {
   return (
-    <div className="flex justify-around bg-primary-900 text-primary-100">
+    <div className="flex justify-around items-center bg-primary-900 text-primary-100">
       <Link href={"/"}>RED TAIL TRACKER</Link>
       <nav>
         <UserInfoHeader />

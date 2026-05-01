@@ -7,10 +7,9 @@ const ThemeChanger = () => {
   const [isActive, setIsActive] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-
-//   useEffect(() => {
-//     setMounted(true);
-//   }, []);
+  //   useEffect(() => {
+  //     setMounted(true);
+  //   }, []);
 
   if (!theme) {
     return null;
@@ -18,8 +17,14 @@ const ThemeChanger = () => {
 
   return (
     <div>
-      The current theme is: {theme}
-      <button onClick={() => setIsActive((prev) => !prev)}>Change Theme</button>
+      <div className="flex">
+        <p>
+          Theme: <span className="capitalize">{theme}</span>{" "}
+        </p>
+        <button onClick={() => setIsActive((prev) => !prev)}>
+          Change Theme
+        </button>
+      </div>
       <div className={`${isActive ? "block" : "hidden"}`}>
         <button onClick={() => setTheme("colombian")}>colombian</button>
         <button onClick={() => setTheme("argentine")}>argentine</button>
@@ -32,4 +37,4 @@ const ThemeChanger = () => {
   );
 };
 
-export default ThemeChanger
+export default ThemeChanger;

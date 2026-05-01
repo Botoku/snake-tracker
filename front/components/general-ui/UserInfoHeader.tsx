@@ -14,7 +14,7 @@ const UserInfoHeader = () => {
       </div>
     );
   return (
-    <div>
+    <div className="flex">
       <p>Hello {user.name}</p>
 
       <button className="cursor-pointer" onClick={signOutUser}>
