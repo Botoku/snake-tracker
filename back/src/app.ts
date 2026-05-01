@@ -18,7 +18,7 @@ app.use(helmet())
 app.use(cors({
   origin: process.env.FRONTEND_URL,
   credentials: true
-}))
+})) 
 
 // Better auth 
 app.all("/api/auth/{*any}", toNodeHandler(auth))

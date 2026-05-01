@@ -41,7 +41,6 @@ async function createFeedingTable(){
         acceptance VARCHAR(50), 
         notes TEXT,
         created_at TIMESTAMP DEFAULT NOW()
-
         )
     `
 

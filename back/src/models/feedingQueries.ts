@@ -26,10 +26,10 @@ async function createFeedingEntry(data: Feeding) {
         snake_id,
         feeding_date,
         prey_type,
-        prey_size,
-        quantity,
         prey_weight,
+        prey_size,
         prey_frozen,
+        quantity,
         acceptance,
         notes,
       ],
@@ -47,10 +47,10 @@ async function findAllFeedingEntries(id: string) {
     SELECT * from feedings  WHERE snake_id = $1 ORDER BY feeding_date
     `;
   try {
-    const result = await query(findFeedingsQuery, [id])
-    return result
+    const result = await query(findFeedingsQuery, [id]);
+    return result;
   } catch (error) {
-    console.log(error, 'Error fetching feedings')
+    console.log(error, "Error fetching feedings");
   }
 }
 export { createFeedingEntry, findAllFeedingEntries };
