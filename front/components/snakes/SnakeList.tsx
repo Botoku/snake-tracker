@@ -34,7 +34,7 @@ const SnakeList = () => {
   return (
     <div className="bg-primary-900  grid grid-cols-1 md:grid-cols-3">
       {snakes?.map((snake) => (
-        <Link className="bg-white p-3" href={`/snake/${snake.id}`} key={snake.id} >
+        <Link className="bg-white p-3" href={`/snake/snake-id?snakeId=${snake.id}`} key={snake.id} >
           <p className="text-primary-800 text-xs">{snake.species}</p>
           <p className="text-black font-bold text-xl">{snake.name}</p>
 

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import FeedingForm from "@/components/snakes/FeedingForm";
 import { Feeding, Snake } from "@/lib/types";
 import {
@@ -12,10 +12,12 @@ import SnakePageInfoHero from "@/components/snakes/SnakePageInfoHero";
 import SnakeFeedingLogs from "@/components/snakes/SnakeFeedingLogs";
 
 const SnakePage = () => {
-  const params = useParams<{ "snake-id": string[] }>();
-  const snakeId = params["snake-id"]?.[0];
+  const params = useSearchParams();
+  const snakeId = params.get("snakeId")
   const [feedingData, setFeedingData] = useState<Feeding[] | null>(null);
   const [snakeInfo, setSnakeInfo] = useState<Snake | null>(null);
+
+  console.log(snakeId, 'ID')
 
   useEffect(() => {
     const fetchData = async () => {

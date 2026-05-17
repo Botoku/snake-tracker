@@ -11,11 +11,14 @@ const SnakeFeedingLogs = ({
   return (
     <div>
       <p className="my-3 text-2xl">Recent Activity</p>
-      <div className="bg-primary-100">
-        <p>Last Fed</p>
-        <p>{feedingData && daysAgo(feedingData[feedingData.length - 1]?.feeding_date)}</p>
-
+      <div className="bg-primary-100 p-2 rounded-lg w-1/4 my-6">
+        <p className="text-xs uppercase">Last Fed</p>
+        <p>
+          {feedingData &&
+            daysAgo(feedingData[feedingData.length - 1]?.feeding_date)}
+        </p>
       </div>
+
       {feedingData &&
         feedingData.map((feed, i) => (
           <div
@@ -27,10 +30,19 @@ const SnakeFeedingLogs = ({
               {feed.acceptance === "refused" && RejectedSVG}
               {feed.acceptance === "regurgitated" && RegurgitationSVG}
             </div>
-            <p className="w-1/6">{new Date(feed.feeding_date).toDateString()}</p>
+            <p className="w-1/6">
+              {new Date(feed.feeding_date).toDateString()}
+            </p>
             <p className="w-1/6">{feed.prey_type}</p>
-            <p className="w-1/6">{feed.prey_frozen}{feed.prey_size}</p>
-            <p className={`w-1/6 ${feed.acceptance === 'accepted' && 'text-green-600'} ${feed.acceptance === 'refused' && 'text-red-600'}`} >{feed.acceptance}</p>
+            <p className="w-1/6">
+              {feed.prey_frozen}
+              {feed.prey_size}
+            </p>
+            <p
+              className={`w-1/6 ${feed.acceptance === "accepted" && "text-green-600"} ${feed.acceptance === "refused" && "text-red-600"}`}
+            >
+              {feed.acceptance}
+            </p>
             <p className="w-1/6">{feed.notes}</p>
           </div>
         ))}

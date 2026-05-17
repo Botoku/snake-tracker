@@ -1,6 +1,6 @@
 "use client";
 import { preyItemDetails } from "@/lib/animalInfo/snakeDetails";
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const FeedingForm = () => {
@@ -18,8 +18,8 @@ const FeedingForm = () => {
   const [activeForm, setActiveForm] = useState(false);
   const [feedingInfo, setFeedingInfo] = useState(initialState);
 
-  const params = useParams<{ "snake-id": string[] }>();
-  const snakeId = params["snake-id"][0]
+  const params = useSearchParams();
+  const snakeId = params.get('snakeId')
 
 
   const handleSubmit = async (e: React.FormEvent) => {
