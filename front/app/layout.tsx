@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/general-ui/Header";
 import { SessionProvider } from "@/components/auth/SessionProvider";
 import { ThemeProvider } from "next-themes";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +33,10 @@ export default function RootLayout({
       >
         <SessionProvider>
           <ThemeProvider themes={['colombian', 'argentine', 'albino', 'sonoran', 'anery', 'moonglow', 'salmon']}>
-            <Header />
-            {children}
+            <Suspense fallback={<p>Loading</p>}>
+              <Header />
+              {children}
+            </Suspense>
           </ThemeProvider>
         </SessionProvider>
       </body>

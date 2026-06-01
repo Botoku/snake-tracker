@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import FeedingForm from "@/components/snakes/FeedingForm";
 import { Feeding, Snake } from "@/lib/types";
@@ -13,11 +13,11 @@ import SnakeFeedingLogs from "@/components/snakes/SnakeFeedingLogs";
 
 const SnakePage = () => {
   const params = useSearchParams();
-  const snakeId = params.get("snakeId")
+  const snakeId = params.get("snakeId");
   const [feedingData, setFeedingData] = useState<Feeding[] | null>(null);
   const [snakeInfo, setSnakeInfo] = useState<Snake | null>(null);
 
-  console.log(snakeId, 'ID')
+  console.log(snakeId, "ID");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,12 +53,15 @@ const SnakePage = () => {
   }, [snakeId]);
 
   return (
+    <Suspense fallback={<p>Loading...</p>}>
+
     <div className="w-[90%] mx-auto pt-4">
       {/* TODO: ADD functionality for uploading and displaying images */}
       <SnakePageInfoHero info={snakeInfo || null} />
       <FeedingForm />
       <SnakeFeedingLogs feedingData={feedingData} />
     </div>
+    </Suspense>
   );
 };
 
