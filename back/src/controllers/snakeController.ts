@@ -3,11 +3,11 @@ import {
   createSnakeEntry,
   findSnakeByOwnerId,
   getSnakeInfoQuery,
-} from "../models/snakeQueries";
+} from "../models/snakeQueries.js";
 import {
   createFeedingEntry,
   findAllFeedingEntries,
-} from "../models/feedingQueries";
+} from "../models/feedingQueries.js";
 
 const getAllSnakeByOwnerId: RequestHandler = async (req, res, next) => {
   const ownerId = req.params.ownerId;

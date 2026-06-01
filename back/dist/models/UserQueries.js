@@ -1,8 +1,7 @@
-import { query } from "../config/db.js"
-
 async function createUserTable() {
     const createUserQuery = `
         
-    ` 
-
+    `;
 }
+export {};
+//# sourceMappingURL=UserQueries.js.map

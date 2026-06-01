@@ -1,5 +1,5 @@
 import express from 'express'
-import { createFeeding, createSnake, getAllSnakeByOwnerId, getAllSnakeFeedings, getSnakeInfo } from '../controllers/snakeController'
+import { createFeeding, createSnake, getAllSnakeByOwnerId, getAllSnakeFeedings, getSnakeInfo } from '../controllers/snakeController.js'
 
 const snakeRouter = express.Router()
 

@@ -1,5 +1,5 @@
-import { query } from "../config/db";
-import type { Feeding } from "../lib/types";
+import { query } from "../config/db.js";
+import type { Feeding } from "../lib/types.js";
 
 async function createFeedingEntry(data: Feeding) {
   const {

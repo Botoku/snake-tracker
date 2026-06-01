@@ -1,5 +1,5 @@
-import { query } from "../config/db";
-import type { Snake } from "../lib/types";
+import { query } from "../config/db.js";
+import type { Snake } from "../lib/types.js";
 // export interface Snake {
 //   id: number;
 //   user_id: string;

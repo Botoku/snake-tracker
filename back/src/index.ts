@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import { pool, testConnection } from "./config/db";
-import app from "./app";
+import { pool, testConnection } from "./config/db.js";
+import app from "./app.js";
 
 dotenv.config();
 

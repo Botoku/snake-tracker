@@ -1,7 +1,6 @@
 import { query } from "../config/db.js";
-
 async function createSnakeTable() {
-  const createSnakeQuery = `
+    const createSnakeQuery = `
     CREATE TABLE IF NOT EXISTS snakes(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
@@ -16,18 +15,17 @@ async function createSnakeTable() {
     updated_at TIMESTAMP DEFAULT NOW()
     )
     `;
-
-  try {
-    // const res = await client()
-    const rows = await query(createSnakeQuery);
-    return rows;
-  } catch (error) {
-    console.error("Error creating snake table", error);
-    throw error
-  }
+    try {
+        // const res = await client()
+        const rows = await query(createSnakeQuery);
+        return rows;
+    }
+    catch (error) {
+        console.error("Error creating snake table", error);
+        throw error;
+    }
 }
-
-async function createFeedingTable(){
+async function createFeedingTable() {
     const createFeedingQuery = `
         CREATE TABLE IF NOT EXISTS feedings (
         id SERIAL PRIMARY KEY,
@@ -42,15 +40,15 @@ async function createFeedingTable(){
         notes TEXT,
         created_at TIMESTAMP DEFAULT NOW()
         )
-    `
-
+    `;
     try {
-        const rows = await query(createFeedingQuery)
-        return rows
-    } catch (error) {
-        console.error('Error creating feeding table', error)
-        throw error
+        const rows = await query(createFeedingQuery);
+        return rows;
+    }
+    catch (error) {
+        console.error('Error creating feeding table', error);
+        throw error;
     }
 }
-
-export { createSnakeTable, createFeedingTable};
+export { createSnakeTable, createFeedingTable };
+//# sourceMappingURL=snakeTables.js.map
