@@ -1,6 +1,6 @@
 import express from 'express'
-import { auth } from '../lib/auth.ts'
-import snakeRouter from './snakeRoute.ts'
+import { auth } from '../lib/auth'
+import snakeRouter from './snakeRoute'
 
 const routes = express.Router()
 

@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import { pool, testConnection } from "./config/db.ts";
-import app from "./app.ts";
+import { pool, testConnection } from "./config/db";
+import app from "./app";
 
 dotenv.config();
 

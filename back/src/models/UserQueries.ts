@@ -1,4 +1,4 @@
-import { query } from "../config/db.ts"
+import { query } from "../config/db"
 
 async function createUserTable() {
     const createUserQuery = `

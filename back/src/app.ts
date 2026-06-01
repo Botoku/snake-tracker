@@ -4,9 +4,9 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import helmet from 'helmet'
 import { toNodeHandler } from "better-auth/node";
-import { auth } from "./lib/auth.ts";
-import routes from "./routes/index.ts";
-import { createFeedingTable, createSnakeTable } from "./models/snakeTables.ts";
+import { auth } from "./lib/auth";
+import routes from "./routes/index";
+import { createFeedingTable, createSnakeTable } from "./models/snakeTables";
 import rateLimit from "express-rate-limit";
 import path, { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
