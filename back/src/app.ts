@@ -31,12 +31,12 @@ const limiter = rateLimit({
 app.use(limiter);
 // Serve static files
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-app.use(express.static(path.join(__dirname, 'out' )))
+// const __dirname = dirname(fileURLToPath(import.meta.url))
+// app.use(express.static(path.join(__dirname, 'out' )))
 
-app.use((req,res, next) => {
-  res.sendFile(path.join(__dirname, 'out'))
-})
+// app.use((req,res, next) => {
+//   res.sendFile(path.join(__dirname, 'out'))
+// })
 
 
 

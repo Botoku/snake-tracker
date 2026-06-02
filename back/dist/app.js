@@ -8,8 +8,6 @@ import { auth } from "./lib/auth.js";
 import routes from "./routes/index.js";
 import { createFeedingTable, createSnakeTable } from "./models/snakeTables.js";
 import rateLimit from "express-rate-limit";
-import path, { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
@@ -25,11 +23,11 @@ const limiter = rateLimit({
 // Apply rate limiter to all requests
 app.use(limiter);
 // Serve static files
-const __dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.join(__dirname, 'out')));
-app.use((req, res, next) => {
-    res.sendFile(path.join(__dirname, 'out'));
-});
+// const __dirname = dirname(fileURLToPath(import.meta.url))
+// app.use(express.static(path.join(__dirname, 'out' )))
+// app.use((req,res, next) => {
+//   res.sendFile(path.join(__dirname, 'out'))
+// })
 // Better auth 
 app.all("/api/auth/{*any}", toNodeHandler(auth));
 app.use(express.json());
