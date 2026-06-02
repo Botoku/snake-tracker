@@ -1,0 +1,9 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/auth/signin/page": "/auth/signin",
+  "/auth/signup/page": "/auth/signup",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/snake/snake-id/page": "/snake/snake-id"
+}
