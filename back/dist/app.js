@@ -13,7 +13,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 app.use(helmet());
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL_PROD || process.env.FRONTEND_URL,
     credentials: true
 }));
 const limiter = rateLimit({
