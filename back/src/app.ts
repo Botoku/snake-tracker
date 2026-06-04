@@ -19,7 +19,8 @@ const port = process.env.PORT || 4000;
 
 app.use(helmet())
 app.use(cors({
-  origin: process.env.FRONTEND_URL_PROD || process.env.FRONTEND_URL,
+  // origin: process.env.FRONTEND_URL_PROD || process.env.FRONTEND_URL,
+  origin: true,
   credentials: true
 })) 
 
@@ -67,8 +68,8 @@ app.use((req, res) => {
 // console.log(client)
 createSnakeTable()
 createFeedingTable()
-// app.listen(port, () => {
-//   console.log("Hello from snake app");
-// });
+app.listen(port, () => {
+  console.log("Hello from snake app");
+});
 
 export default app
