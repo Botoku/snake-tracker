@@ -46,13 +46,13 @@ const HomeSalesPage = () => {
         </div>
       </div>
 
-      <p>
+      <div>
         <p>
           &quot;I used to keep everything in a Google Sheet and a sticky note on
           the enclosure. This is so much better.&quot;
         </p>
         <p>A keeper with four ball pythons and one very opinionated hognose</p>
-      </p>
+      </div>
 
       <div>
         <p>Your whole collection, in one place.</p>

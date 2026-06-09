@@ -12,6 +12,8 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
     const hydrate = async () => {
       const { session, error } = await sessionInfo();
 
+      if(error) console.log(error)
+
       if (session?.user) {
         setUser(session.user);
       } else {
