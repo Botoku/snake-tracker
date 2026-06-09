@@ -10,7 +10,11 @@ const SnakeList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user?.id) return;
+    if (!user?.id) {
+      setLoading(false);
+      return;
+    }
+    // if (!user?.id) return;
 
     const fetchSnakes = async () => {
       try {
@@ -29,21 +33,25 @@ const SnakeList = () => {
     fetchSnakes();
   }, [user?.id]);
 
-  if (loading) return <div>Loading...</div>;
   console.log(snakes);
   return (
     <div className="bg-primary-900  grid grid-cols-1 md:grid-cols-3">
-      {snakes?.map((snake) => (
-        <Link className="bg-white p-3" href={`/snake/snake-id?snakeId=${snake.id}`} key={snake.id} >
-          <p className="text-primary-800 text-xs">{snake.species}</p>
-          <p className="text-black font-bold text-xl">{snake.name}</p>
+      {snakes &&
+        snakes?.map((snake) => (
+          <Link
+            className="bg-white p-3"
+            href={`/snake/snake-id?snakeId=${snake.id}`}
+            key={snake.id}
+          >
+            <p className="text-primary-800 text-xs">{snake.species}</p>
+            <p className="text-black font-bold text-xl">{snake.name}</p>
 
-          <div className="bg-gray-300 text-black w-1/3 p-3 rounded-md">
-            <p className="text-xs">Morph</p>
-            <p className="font-bold">{snake.morph}</p>
-          </div>
-        </Link>
-      ))}
+            <div className="bg-gray-300 text-black w-1/3 p-3 rounded-md">
+              <p className="text-xs">Morph</p>
+              <p className="font-bold">{snake.morph}</p>
+            </div>
+          </Link>
+        ))}
     </div>
   );
 };

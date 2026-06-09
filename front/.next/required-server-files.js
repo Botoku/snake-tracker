@@ -107,7 +107,7 @@ self.__SERVER_FILES_MANIFEST={
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\vince\\OneDrive\\Desktop\\fullstack projects\\snake-tracker",
+    "outputFileTracingRoot": "C:\\Users\\vince\\OneDrive\\Desktop\\fullstack projects\\snake-tracker\\front",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -300,12 +300,12 @@ self.__SERVER_FILES_MANIFEST={
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
     "turbopack": {
-      "root": "C:\\Users\\vince\\OneDrive\\Desktop\\fullstack projects\\snake-tracker"
+      "root": "C:\\Users\\vince\\OneDrive\\Desktop\\fullstack projects\\snake-tracker\\front"
     },
     "distDirRoot": ".next"
   },
   "appDir": "C:\\Users\\vince\\OneDrive\\Desktop\\fullstack projects\\snake-tracker\\front",
-  "relativeAppDir": "front",
+  "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",
     ".next\\server\\pages-manifest.json",

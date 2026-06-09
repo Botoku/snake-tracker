@@ -12,7 +12,10 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
     const hydrate = async () => {
       const { session, error } = await sessionInfo();
 
-      if(error) console.log(error)
+      if(error) {
+        console.log(error)
+console.log(error.message)
+      }
 
       if (session?.user) {
         setUser(session.user);

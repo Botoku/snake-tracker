@@ -13,10 +13,11 @@ const app = express();
 const port = process.env.PORT || 4000;
 app.use(helmet());
 app.use(cors({
-    // origin: process.env.FRONTEND_URL_PROD || process.env.FRONTEND_URL,
-    origin: true,
+    origin: process.env.FRONTEND_URL || process.env.FRONTEND_URL_PROD,
+    // origin: true,
     credentials: true
 }));
+console.log(process.env.FRONTEND_URL_PROD, process.env.FRONTEND_URL, 'variables');
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000, // 1 minute
     max: 20,
@@ -35,6 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.get("/", (req, res) => {
+    // res.send(process.env.FRONTEND_URL_PROD)
     res.send("Hello from the snake tracker");
 });
 app.use('/api', routes);
@@ -48,6 +50,7 @@ createSnakeTable();
 createFeedingTable();
 app.listen(port, () => {
     console.log("Hello from snake app");
+    console.log(process.env.FRONTEND_URL_PROD, process.env.FRONTEND_URL, 'variables');
 });
 export default app;
 //# sourceMappingURL=app.js.map

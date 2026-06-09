@@ -1,22 +1,22 @@
 {
   "app": {
-    "[project]/front/app/_not-found/page": [
+    "[project]/app/_not-found/page": [
       "static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2",
       "static/media/797e433ab948586e-s.p.29207c2f.woff2"
     ],
-    "[project]/front/app/auth/signin/page": [
+    "[project]/app/auth/signin/page": [
       "static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2",
       "static/media/797e433ab948586e-s.p.29207c2f.woff2"
     ],
-    "[project]/front/app/auth/signup/page": [
+    "[project]/app/auth/signup/page": [
       "static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2",
       "static/media/797e433ab948586e-s.p.29207c2f.woff2"
     ],
-    "[project]/front/app/page": [
+    "[project]/app/page": [
       "static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2",
       "static/media/797e433ab948586e-s.p.29207c2f.woff2"
     ],
-    "[project]/front/app/snake/snake-id/page": [
+    "[project]/app/snake/snake-id/page": [
       "static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2",
       "static/media/797e433ab948586e-s.p.29207c2f.woff2"
     ]
