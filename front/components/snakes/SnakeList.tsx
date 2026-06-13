@@ -35,11 +35,11 @@ const SnakeList = () => {
 
   console.log(snakes);
   return (
-    <div className="bg-primary-900  grid grid-cols-1 md:grid-cols-3">
+    <div className="bg-primary-900 gap-3  grid grid-cols-1 md:grid-cols-3">
       {snakes &&
         snakes?.map((snake) => (
           <Link
-            className="bg-white p-3"
+            className="bg-white p-3 rounded"
             href={`/snake/snake-id?snakeId=${snake.id}`}
             key={snake.id}
           >

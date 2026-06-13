@@ -13,12 +13,12 @@ import RegisterSnakeForm from "./RegisterSnakeForm";
 const RegisterSnake = () => {
   const [activeForm, setActiveForm] = useState(false);
   return (
-    <div>
+    <div className="mb-8 pt-8">
       <button
-        className="bg-red-200 text-black cursor-pointer"
+        className="bg-primary-200 px-4 py-1 rounded  text-black cursor-pointer hover:bg-primary-100"
         onClick={() => setActiveForm((prev) => !prev)}
       >
-        Register Snake
+        {activeForm ? "Close Form" : "Register Snake"}
       </button>
       {activeForm && (
         <>

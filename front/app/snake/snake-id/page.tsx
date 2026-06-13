@@ -54,13 +54,12 @@ const SnakePage = () => {
 
   return (
     <Suspense fallback={<p>Loading...</p>}>
-
-    <div className="w-[90%] mx-auto pt-4">
-      {/* TODO: ADD functionality for uploading and displaying images */}
-      <SnakePageInfoHero info={snakeInfo || null} />
-      <FeedingForm />
-      <SnakeFeedingLogs feedingData={feedingData} />
-    </div>
+      <div className="w-[90%] mx-auto pt-4">
+        {/* TODO: ADD functionality for uploading and displaying images */}
+        <SnakePageInfoHero info={snakeInfo || null} />
+        <FeedingForm />
+        <SnakeFeedingLogs feedingData={feedingData} />
+      </div>
     </Suspense>
   );
 };

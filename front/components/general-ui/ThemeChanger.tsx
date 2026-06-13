@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const ThemeChanger = () => {
   const { theme, setTheme } = useTheme();
   const [isActive, setIsActive] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  // const [mounted, setMounted] = useState(false);
 
   //   useEffect(() => {
   //     setMounted(true);
@@ -19,19 +19,22 @@ const ThemeChanger = () => {
     <div>
       <div className="flex">
         <p>
-          Theme: <span className="capitalize">{theme}</span>{" "}
+          Theme: <span className="capitalize font-bold">{theme}</span>{" "}
         </p>
-        <button onClick={() => setIsActive((prev) => !prev)}>
-          Change Theme
+        <button className="bg-primary-200 cursor-pointer  hover:bg-primary-100 ml-3 text-black px-4 py-1 rounded" onClick={() => setIsActive((prev) => !prev)}>
+          {
+            isActive ? 'Close' : 'Change Theme'
+          }
+          
         </button>
       </div>
-      <div className={`${isActive ? "block" : "hidden"}`}>
-        <button onClick={() => setTheme("colombian")}>colombian</button>
-        <button onClick={() => setTheme("argentine")}>argentine</button>
-        <button onClick={() => setTheme("albino")}>albino</button>
-        <button onClick={() => setTheme("sonoran")}>sonoran</button>
-        <button onClick={() => setTheme("anery")}>anery</button>
-        <button onClick={() => setTheme("salmon")}>salmon</button>
+      <div className={`${isActive ? "flex" : "hidden"} gap-2 `}>
+        <button className="cursor-pointer hover:text-primary-200" onClick={() => setTheme("colombian")}>colombian</button>
+        <button className="cursor-pointer hover:text-primary-200" onClick={() => setTheme("albino")}>albino</button>
+        <button className="cursor-pointer hover:text-primary-200" onClick={() => setTheme("anery")}>anery</button>
+        <button className="cursor-pointer hover:text-primary-200" onClick={() => setTheme("argentine")}>argentine</button>
+        <button className="cursor-pointer hover:text-primary-200" onClick={() => setTheme("sonoran")}>sonoran</button>
+        <button className="cursor-pointer hover:text-primary-200" onClick={() => setTheme("salmon")}>salmon</button>
       </div>
     </div>
   );
