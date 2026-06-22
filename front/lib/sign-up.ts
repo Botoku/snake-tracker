@@ -12,6 +12,7 @@ export const signUserUp = async (userData: UserType) => {
       email: userData.email,
       name: userData.name,
       password: userData.password,
+      callbackURL: "/"
     },
     {
       onRequest: (ctx) => {
@@ -45,6 +46,7 @@ export const signUserIn = async (userData: UserType) => {
     {
       email: userData.email,
       password: userData.password,
+      callbackURL: "/"
     },
     {
       onRequest: (ctx) => {
