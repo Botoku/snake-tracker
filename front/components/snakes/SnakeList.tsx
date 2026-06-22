@@ -33,7 +33,6 @@ const SnakeList = () => {
     fetchSnakes();
   }, [user?.id]);
 
-  console.log(snakes);
   return (
     <div className="bg-primary-900 gap-3  grid grid-cols-1 md:grid-cols-3">
       {snakes &&
