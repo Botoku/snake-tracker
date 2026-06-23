@@ -72,10 +72,10 @@ app.use((req, res) => {
 // console.log(client)
 createSnakeTable()
 createFeedingTable()
-app.listen(port, () => {
-  console.log("Hello from snake app");
-console.log(process.env.FRONTEND_URL_PROD, process.env.FRONTEND_URL, 'variables')
+// app.listen(port, () => {
+//   console.log("Hello from snake app");
+// console.log(process.env.FRONTEND_URL_PROD, process.env.FRONTEND_URL, 'variables')
 
-});
+// });
 
 export default app
