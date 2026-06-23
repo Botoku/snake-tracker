@@ -22,7 +22,7 @@ const HomeSalesPage = () => {
             See how it works
           </p>
         </div>
-        <p className="my-3 text-sm">Free to start. No credit card needed.</p>
+        <p className="my-3 text-sm font-bold">Free to start. No credit card needed.</p>
       </div>
 
       <div className="bg-accent-1 py-8 flex gap-4 px-[5%]">
@@ -54,22 +54,22 @@ const HomeSalesPage = () => {
         </div>
       </div>
 
-      <div>
-        <p>
-          &quot;I used to keep everything in a Google Sheet and a sticky note on
-          the enclosure. This is so much better.&quot;
-        </p>
-        <p>A keeper with four ball pythons and one very opinionated hognose</p>
-      </div>
-
-      <div >
-        <p>Your whole collection, in one place.</p>
-        <p>
-          Takes about two minutes to add your first snake. You&apos;ll wonder
-          why you didn&apos;t do this sooner.
-        </p>
-
-        <button>Grt started</button>
+      <div className="px-5">
+        <div>
+          <p>
+            &quot;I used to keep everything in a Google Sheet and a sticky note on
+            the enclosure. This is so much better.&quot;
+          </p>
+          <p>A keeper with four ball pythons and one very opinionated hognose</p>
+        </div>
+        <div >
+          <p>Your whole collection, in one place.</p>
+          <p>
+            Takes about two minutes to add your first snake. You&apos;ll wonder
+            why you didn&apos;t do this sooner.
+          </p>
+          <button>Grt started</button>
+        </div>
       </div>
     </div>
   );
