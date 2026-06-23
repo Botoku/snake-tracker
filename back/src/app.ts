@@ -25,6 +25,7 @@ app.use(cors({
 })) 
 
 console.log(process.env.FRONTEND_URL_PROD, process.env.FRONTEND_URL, 'variables')
+app.set('trust proxy', 1);
 
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
