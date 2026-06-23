@@ -45,7 +45,7 @@ app.use(limiter);
 
 
 // Better auth 
-app.all("/api/auth/{*any}", toNodeHandler(auth))
+app.all("/auth/{*any}", toNodeHandler(auth))
 
 
 app.use(express.json())

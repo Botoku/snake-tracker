@@ -5,6 +5,6 @@ export const authClient = createAuthClient({
     process.env.NEXT_PUBLIC_BACKEND_URL_AUTH ||
     "http://localhost:4000/api/auth",
   trustedOrigins: ["https://snakeparent.com", "https://www.snakeparent.com"],
-  basePath: '/api/auth'
+  basePath: "/backend/auth",
   // baseURL: "http://localhost:4000",
 });
