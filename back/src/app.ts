@@ -52,12 +52,13 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 
-app.get("/", (req, res) => {
+app.get("/test", (req, res) => {
   // res.send(process.env.FRONTEND_URL_PROD)
   res.send("Hello from the snake tracker");
 });
 
-app.use('/api', routes)
+// app.use('/api', routes)
+app.use('/', routes)
 
 
 
