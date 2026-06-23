@@ -33,7 +33,7 @@ const SignUp = () => {
           <input type="password" name="password" id="password" onChange={(e)=> handleUserChange("password", e.target.value)}/>
           <label htmlFor="password">Password</label>
         </div>
-        <button type="submit">Sign Up</button>
+        <button className="bg-primary-100 px-2 py-1 rounded-lg cursor-pointer" type="submit">Sign Up</button>
       </form>
     </div>
   );

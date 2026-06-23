@@ -18,7 +18,7 @@ const SignIn = () => {
   };
   return (
     <div>
-        <p>hi</p>
+        <p>Sign in to snake parent</p>
       <form onSubmit={handleSubmit}>
         <div>
           <input
@@ -38,7 +38,7 @@ const SignIn = () => {
           />
           <label htmlFor="password">Password</label>
         </div>
-        <button type="submit">Sign In</button>
+        <button className="bg-primary-100 px-2 py-1 rounded-lg cursor-pointer" type="submit">Sign In</button>
       </form>
     </div>
   );
