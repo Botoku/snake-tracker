@@ -18,27 +18,40 @@ const SignIn = () => {
   };
   return (
     <div>
-        <p>Sign in to snake parent</p>
+      <p className="text-sm mb-3">Sign in to snake parent</p>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="mb-4">
+          <label className="block font-bold text-sm" htmlFor="email">
+            Email
+          </label>
           <input
+            className="border border-gray-600 rounded-lg w-full px-4 py-1 text-sm"
             type="text"
             name="email"
             id="email"
+            placeholder="Enter Your Email"
             onChange={(e) => handleUserChange("email", e.target.value)}
           />
-          <label htmlFor="email">Email</label>
         </div>
-        <div>
+        <div className="mb-4">
+          <label className="block font-bold text-sm" htmlFor="password">
+            Password
+          </label>
           <input
+            placeholder="Enter Your Password"
+            className="border border-gray-600 rounded-lg w-full px-4 py-1 text-sm"
             type="password"
             name="password"
             id="password"
             onChange={(e) => handleUserChange("password", e.target.value)}
           />
-          <label htmlFor="password">Password</label>
         </div>
-        <button className="bg-primary-100 px-2 py-1 rounded-lg cursor-pointer" type="submit">Sign In</button>
+        <button
+          className="bg-[#526E7F] px-2 py-1 rounded-lg cursor-pointer w-full font-bold mt-3"
+          type="submit"
+        >
+          Sign In
+        </button>
       </form>
     </div>
   );
