@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Nunito } from "next/font/google";
+import { Geist, Geist_Mono, Nunito, Gorditas } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/general-ui/Header";
 import { SessionProvider } from "@/components/auth/SessionProvider";
@@ -13,6 +13,10 @@ const geistSans = Geist({
 const nunito = Nunito({
   variable: "--font-nunito",
   subsets: ["latin"],
+});
+const gorditas = Gorditas({
+  variable: "--font-gorditas",
+  weight:["400", "700" ]
 });
 
 const geistMono = Geist_Mono({
@@ -33,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${nunito.variable}  antialiased`}
+        className={`${nunito.variable} ${gorditas.variable}  antialiased`}
       >
         <SessionProvider>
           <ThemeProvider themes={['colombian', 'argentine', 'albino', 'sonoran', 'anery', 'moonglow', 'salmon']}>

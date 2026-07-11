@@ -8,9 +8,9 @@ const UserInfoHeader = () => {
   const { signOutUser } = useAuth();
   if (!user)
     return (
-      <div>
-        <Link href={"/auth/signin"}>Sign In</Link>
-        <Link href={"/auth/signup"}>Sign Up</Link>
+      <div className="text-black">
+        <Link className="border rounded px-5 py-1" href={"/auth/signin"}>Sign-In</Link>
+        <Link className="bg-black text-white ml-4 rounded px-5 py-1" href={"/auth/signup"}>Sign-Up</Link>
       </div>
     );
   return (
