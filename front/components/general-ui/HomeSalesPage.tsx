@@ -11,7 +11,7 @@ const HomeSalesPage = () => {
             Keep track of every <br className="hidden md:block"/>feeding, every shed, every<br className="hidden md:block"/> weigh in
           </p>
           <div className="flex flex-col md:flex-row justify-between items-center mt-10">
-            <div className="relative  h-37.5 w-full md:w-1/2">
+            <div className="relative  h-37.5 w-full md:w-75">
               <Image alt="corn snake" src={"/cornSnakeHero.png"} fill />
             </div>
             <div className="md:w-1/2 mt-4 md:mt-0 flex flex-col">

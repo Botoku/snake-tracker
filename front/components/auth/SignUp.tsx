@@ -21,19 +21,19 @@ const SignUp = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div>
-          <input type="text" name="name" id="name" onChange={(e)=> handleUserChange("name", e.target.value)} />
-          <label htmlFor="name">Username</label>
+        <div className="mb-4">
+          <label className="block font-bold text-sm" htmlFor="name">Username</label>
+          <input className="border border-gray-600 rounded-lg w-full px-4 py-1 text-sm" placeholder="Enter Your Name" type="text" name="name" id="name" onChange={(e)=> handleUserChange("name", e.target.value)} />
         </div>
-        <div>
-          <input type="text" name="email" id="email" onChange={(e)=> handleUserChange("email", e.target.value)}/>
-          <label htmlFor="email">Email</label>
+        <div className="mb-4">
+          <label className="block font-bold text-sm" htmlFor="email">Email</label>
+          <input className="border border-gray-600 rounded-lg w-full px-4 py-1 text-sm" placeholder="Enter Your Email"  type="text" name="email" id="email" onChange={(e)=> handleUserChange("email", e.target.value)}/>
         </div>
-        <div>
-          <input type="password" name="password" id="password" onChange={(e)=> handleUserChange("password", e.target.value)}/>
-          <label htmlFor="password">Password</label>
+        <div className="mb-4">
+          <label className="block font-bold text-sm" htmlFor="password">Password</label>
+          <input className="border border-gray-600 rounded-lg w-full px-4 py-1 text-sm" placeholder="Enter Your Password"  type="password" name="password" id="password" onChange={(e)=> handleUserChange("password", e.target.value)}/>
         </div>
-        <button className="bg-primary-100 px-2 py-1 rounded-lg cursor-pointer" type="submit">Sign Up</button>
+        <button className="bg-[#F09F86] px-2 py-1 rounded-lg cursor-pointer w-full font-bold mt-3" type="submit">Sign Up</button>
       </form>
     </div>
   );
