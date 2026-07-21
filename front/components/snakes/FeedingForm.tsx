@@ -19,8 +19,7 @@ const FeedingForm = () => {
   const [feedingInfo, setFeedingInfo] = useState(initialState);
 
   const params = useSearchParams();
-  const snakeId = params.get('snakeId')
-
+  const snakeId = params.get("snakeId");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,7 +62,7 @@ const FeedingForm = () => {
           <div className="md:flex">
             <div className="md:w-2/3">
               <div className="bg-primary-100 p-3 rounded-lg my-2">
-                <label className="text-sm" htmlFor="date">
+                <label className="text-sm font-bold mr-3" htmlFor="date">
                   Date Of Feeding
                 </label>
                 <input
@@ -82,7 +81,7 @@ const FeedingForm = () => {
 
               <div className="bg-primary-100 p-3 rounded-lg my-2">
                 <div>
-                  <label htmlFor="prey">Prey Item Details</label>
+                  <label className="font-bold mr-3" htmlFor="prey">Prey Item Details</label>
                   <select
                     onChange={(e) =>
                       setFeedingInfo((prev) => ({
@@ -90,6 +89,7 @@ const FeedingForm = () => {
                         prey_type: e.target.value,
                       }))
                     }
+                    className="border rounded"
                     value={feedingInfo.prey_type}
                     name="prey"
                     id="prey"
@@ -107,6 +107,7 @@ const FeedingForm = () => {
                     type="text"
                     name="preyWeight"
                     id="preyWeight"
+                          className="w-full bg-gray-100 py-1 px-2"
                     onChange={(e) =>
                       setFeedingInfo((prev) => ({
                         ...prev,
@@ -120,7 +121,7 @@ const FeedingForm = () => {
             </div>
             <div className="md:w-1/3">
               <div className="bg-primary-200 p-3 rounded-lg my-2">
-                <label htmlFor="">Prey Status</label>
+                <label className="font-bold" htmlFor="">Prey Status</label>
                 <ul>
                   <li>
                     <button
@@ -130,11 +131,11 @@ const FeedingForm = () => {
                           prey_frozen: "frozen_thawed",
                         }))
                       }
-                      className={
+                      className={`${
                         feedingInfo.prey_frozen === "frozen_thawed"
-                          ? "selected"
+                          ? "selected bg-primary-800"
                           : ""
-                      }
+                      } px-3 py-1 rounded cursor-pointer hover:bg-primary-600`}
                       type="button"
                     >
                       Frozen/Thawed
@@ -148,9 +149,11 @@ const FeedingForm = () => {
                           prey_frozen: "live",
                         }))
                       }
-                      className={
-                        feedingInfo.prey_frozen === "live" ? "selected" : ""
-                      }
+                      className={`${
+                        feedingInfo.prey_frozen === "live"
+                          ? "selected bg-primary-800"
+                          : ""
+                      } px-3 py-1 rounded cursor-pointer hover:bg-primary-600`}
                       type="button"
                     >
                       Live
@@ -164,11 +167,11 @@ const FeedingForm = () => {
                           prey_frozen: "freshly_killed",
                         }))
                       }
-                      className={
+                      className={`${
                         feedingInfo.prey_frozen === "freshly_killed"
-                          ? "selected"
+                          ? "selected bg-primary-800"
                           : ""
-                      }
+                      } px-3 py-1 rounded cursor-pointer hover:bg-primary-600`}
                       type="button"
                     >
                       Fresh Killed
@@ -180,10 +183,15 @@ const FeedingForm = () => {
           </div>
 
           <div className="bg-primary-100 p-3 rounded-lg my-2">
-            <label htmlFor="">Feeding Response</label>
+            <label className="font-bold" htmlFor="">Feeding Response</label>
             <div>
               <button
                 type="button"
+                className={`${
+                  feedingInfo.acceptance === "accepted"
+                    ? "selected bg-primary-800"
+                    : ""
+                } px-3 py-1 rounded cursor-pointer hover:bg-primary-600`}
                 onClick={() =>
                   setFeedingInfo((prev) => ({
                     ...prev,
@@ -195,6 +203,11 @@ const FeedingForm = () => {
               </button>
               <button
                 type="button"
+                className={`${
+                  feedingInfo.acceptance === "refused"
+                    ? "selected bg-primary-800"
+                    : ""
+                } px-3 py-1 rounded cursor-pointer hover:bg-primary-600`}
                 onClick={() =>
                   setFeedingInfo((prev) => ({ ...prev, acceptance: "refused" }))
                 }
@@ -203,6 +216,11 @@ const FeedingForm = () => {
               </button>
               <button
                 type="button"
+                className={`${
+                  feedingInfo.acceptance === "regurgitated"
+                    ? "selected bg-primary-800"
+                    : ""
+                } px-3 py-1 rounded cursor-pointer hover:bg-primary-600`}
                 onClick={() =>
                   setFeedingInfo((prev) => ({
                     ...prev,
@@ -215,16 +233,17 @@ const FeedingForm = () => {
             </div>
           </div>
           <div className="bg-primary-100 p-3 rounded-lg my-2">
-            <label htmlFor="notes">Feeding Notes</label>
+            <label className="font-bold" htmlFor="notes">Feeding Notes</label>
             <input
               type="text"
               value={feedingInfo.notes}
+              className="w-full bg-gray-100 py-1 px-2"
               onChange={(e) =>
                 setFeedingInfo((prev) => ({ ...prev, notes: e.target.value }))
               }
             />
           </div>
-          <button type="submit">Save Feeding Info</button>
+          <button className="cursor-pointer bg-accent-1 px-3 py-1 font-bold rounded" type="submit">Save Feeding Info</button>
         </form>
       )}
     </div>

@@ -8,7 +8,7 @@ const Page = () => {
   const user = useUserInfoStore((state) => state.user);
   if (!user) return <HomeSalesPage />;
   return (
-    <div className="min-h-screen bg-primary-900">
+    <div className="min-h-screen bg-primary-900 pt-10">
       <SnakeListHome />
     </div>
   );

@@ -54,7 +54,7 @@ const SnakePage = () => {
 
   return (
     <Suspense fallback={<p>Loading...</p>}>
-      <div className="w-[90%] mx-auto pt-4">
+      <div className="w-[90%] mx-auto pt-10">
         {/* TODO: ADD functionality for uploading and displaying images */}
         <SnakePageInfoHero info={snakeInfo || null} />
         <FeedingForm />
