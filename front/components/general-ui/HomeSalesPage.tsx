@@ -28,7 +28,7 @@ const HomeSalesPage = () => {
       </div>
       <div className="bg-[#F09F86] border-t border-b border-black flex items-center justify-center py-4 text-xl">
         <p className="text-center w-[90%] md:w-[60%] font-gorditas">
-          Log everything without digging through a notes app. Stop trying to
+          Log EVERYTHING without digging through a notes app. Stop trying to
           remember if the Ball Python ate last Tuesday or the Tuesday before.
         </p>
       </div>

@@ -12,7 +12,7 @@ export const signUserUp = async (userData: UserType) => {
       email: userData.email,
       name: userData.name,
       password: userData.password,
-      callbackURL: "/"
+      callbackURL: "/",
     },
     {
       onRequest: (ctx) => {
@@ -21,6 +21,7 @@ export const signUserUp = async (userData: UserType) => {
       onSuccess: (ctx) => {
         // redirect to dashboard or signin page
         console.log("Success signing up");
+        redirect("/");
       },
       onError: (ctx) => {
         // display error message
@@ -46,7 +47,7 @@ export const signUserIn = async (userData: UserType) => {
     {
       email: userData.email,
       password: userData.password,
-      callbackURL: "/"
+      callbackURL: "/",
     },
     {
       onRequest: (ctx) => {
@@ -55,7 +56,6 @@ export const signUserIn = async (userData: UserType) => {
       onSuccess: (ctx) => {
         // redirect to dashboard or signin page
         console.log("Success signing In");
-        
       },
       onError: (ctx) => {
         // display error message
@@ -81,5 +81,5 @@ export const signOutUser = async () => {
 export const sessionInfo = async () => {
   const { data: session, error } = await authClient.getSession();
 
-  return {session, error}
+  return { session, error };
 };
