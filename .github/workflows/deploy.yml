@@ -25,10 +25,10 @@ jobs:
             cd ~/snake-tracker/back
             npm install
             npm run build
-            pm2 restart snakeparent-backend
+            pm2 restart back
 
             # Frontend
             cd ~/snake-tracker/front
             npm install
             npm run build
-            pm2 restart snakeparent-frontend
+            pm2 restart front
