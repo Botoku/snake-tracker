@@ -184,7 +184,7 @@ const RegisterSnakeForm = () => {
       </form>
 
       <p className="mt-15 underline">TEMP FORM INFO</p>
-      <div style={{ padding: "0 2.5rem 2.5rem" }}>
+      {/* <div style={{ padding: "0 2.5rem 2.5rem" }}>
         <div className="debug-panel">
           {Object.entries(formData).map(([k, v]) => (
             <div key={k}>
@@ -192,7 +192,7 @@ const RegisterSnakeForm = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
