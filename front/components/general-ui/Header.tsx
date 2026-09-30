@@ -8,9 +8,9 @@ const Header = () => {
   return (
     <div className="bg-white/70 backdrop-blur-md flex justify-between px-10 items-center fixed top-0 z-10 py-3 w-full  border-primary-800">
       <Link className="text-black font-bold" href={"/"}>Snake Parent</Link>
-      <nav>
+      <nav className="flex items-center gap-4">
         <UserInfoHeader />
-        {/* <ThemeChanger /> */}
+        <ThemeChanger />
       </nav>
     </div>
   );
