@@ -19,6 +19,11 @@ const ThemeChanger = () => {
 
   if (!user) return;
 
+  const handleThemeChange = (theme: string) =>{
+    setTheme(theme)
+    setIsActive(false)
+  }
+
   return (
     <div>
       <div className="flex items-center">
@@ -35,37 +40,37 @@ const ThemeChanger = () => {
       <div className={`${isActive ? "flex" : "hidden"} gap-2 `}>
         <button
           className="cursor-pointer hover:text-primary-200"
-          onClick={() => setTheme("colombian")}
+          onClick={() => handleThemeChange("colombian")}
         >
           colombian
         </button>
         <button
           className="cursor-pointer hover:text-primary-200"
-          onClick={() => setTheme("albino")}
+          onClick={() => handleThemeChange("albino")}
         >
           albino
         </button>
         <button
           className="cursor-pointer hover:text-primary-200"
-          onClick={() => setTheme("anery")}
+          onClick={() => handleThemeChange("anery")}
         >
           anery
         </button>
         <button
           className="cursor-pointer hover:text-primary-200"
-          onClick={() => setTheme("argentine")}
+          onClick={() => handleThemeChange("argentine")}
         >
           argentine
         </button>
         <button
           className="cursor-pointer hover:text-primary-200"
-          onClick={() => setTheme("sonoran")}
+          onClick={() => handleThemeChange("sonoran")}
         >
           sonoran
         </button>
         <button
           className="cursor-pointer hover:text-primary-200"
-          onClick={() => setTheme("salmon")}
+          onClick={() => handleThemeChange("salmon")}
         >
           salmon
         </button>
