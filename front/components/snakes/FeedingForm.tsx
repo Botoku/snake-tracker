@@ -236,6 +236,7 @@ const FeedingForm = () => {
             <label className="font-bold" htmlFor="notes">Feeding Notes</label>
             <input
               type="text"
+              id="notes"
               value={feedingInfo.notes}
               className="w-full bg-gray-100 py-1 px-2"
               onChange={(e) =>

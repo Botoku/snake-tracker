@@ -1,7 +1,6 @@
 "use client";
 import { snakeSpeciesEN } from "@/lib/animalInfo/species";
-// import { sessionInfo } from "@/lib/sign-up";
-import { useUserInfoStore } from "@/lib/Store";
+import { useSnakeListStore, useUserInfoStore } from "@/lib/Store";
 import React, { useState } from "react";
 
 type AnimalFormData = {
@@ -12,11 +11,12 @@ type AnimalFormData = {
   date_of_birth: string;
   acquisition_date: string;
   notes: string;
-  owner_ids: string[];
+  owner_ids?: string[];
 };
 
 const RegisterSnakeForm = () => {
   const user = useUserInfoStore((state) => state.user);
+  const addSnake = useSnakeListStore((state) => state.addSnake);
   const sexOptions = ["male", "female", "unknown"];
 
   const initialState: AnimalFormData = {
@@ -27,17 +27,22 @@ const RegisterSnakeForm = () => {
     date_of_birth: "",
     acquisition_date: "",
     notes: "",
-    owner_ids: user?.id ? [user.id] : [],
   };
   const [formData, setFormData] = useState(initialState);
-
+  const [feedBack, setFeedBack] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // setFormData({ ...formData, owner_ids: [user?.id] });
-    console.log(formData);
 
     try {
+      setIsSubmitting(true);
+      if (!user?.id) {
+        setFeedBack("You must be logged in to create a snake.");
+        return;
+      }
+      const payload = { ...formData, owner_ids: user?.id ? [user.id] : [] };
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL!}/snakes`,
         {
@@ -45,13 +50,24 @@ const RegisterSnakeForm = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         },
       );
+      if (!response.ok) {
+        const err = await response.json().catch(() => null);
+        console.log(err);
+        throw new Error(err?.detail ?? `Request failed ${response.status}`);
+      }
       const data = await response.json();
+      addSnake(data)
       console.log(data);
+      setFeedBack("success");
     } catch (error) {
       console.log(error);
+      setFeedBack("Failed to create new snake!");
+    } finally {
+      setIsSubmitting(false);
+      setFormData(initialState);
     }
   };
 
@@ -66,7 +82,9 @@ const RegisterSnakeForm = () => {
 
   const handleReset = () => {
     setFormData(initialState);
+    setFeedBack("");
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -74,7 +92,9 @@ const RegisterSnakeForm = () => {
           {/* <p className="text-2xl text-center uppercase">Basic Info</p> */}
           <div className="md:flex my-5">
             <div>
-              <label className="cursor-pointer mr-4 font-bold" htmlFor="name">Name of Snake</label>
+              <label className="cursor-pointer mr-4 font-bold" htmlFor="name">
+                Name of Snake
+              </label>
               <input
                 type="text"
                 id="name"
@@ -86,7 +106,12 @@ const RegisterSnakeForm = () => {
               />
             </div>
             <div className="">
-              <label className="md:ml-5 font-bold cursor-pointer " htmlFor="species">Species</label>
+              <label
+                className="md:ml-5 font-bold cursor-pointer "
+                htmlFor="species"
+              >
+                Species
+              </label>
               <select
                 name="species"
                 id="species"
@@ -105,7 +130,12 @@ const RegisterSnakeForm = () => {
           </div>
           <div className="md:flex mb-5">
             <div>
-              <label className="font-bold cursor-pointer block md:inline" htmlFor="date_of_birth">Date of Birth</label>
+              <label
+                className="font-bold cursor-pointer block md:inline"
+                htmlFor="date_of_birth"
+              >
+                Date of Birth
+              </label>
               <input
                 id="date_of_birth"
                 name="date_of_birth"
@@ -116,7 +146,12 @@ const RegisterSnakeForm = () => {
               />
             </div>
             <div>
-              <label className="font-bold ml-5 cursor-pointer" htmlFor="acquisition_date">Acquisition Date</label>
+              <label
+                className="font-bold ml-5 cursor-pointer"
+                htmlFor="acquisition_date"
+              >
+                Acquisition Date
+              </label>
               <input
                 id="acquisition_date"
                 name="acquisition_date"
@@ -128,16 +163,17 @@ const RegisterSnakeForm = () => {
             </div>
           </div>
           <div className="mt-5">
-            <label className="font-bold cursor-pointer" htmlFor="sex">Sex</label>
+            <label className="font-bold cursor-pointer" htmlFor="sex">
+              Sex
+            </label>
             <select
               onChange={handleChange}
               value={formData.sex}
               name="sex"
               id="sex"
               className="p-1 rounded bg-white text-primary-800 ml-5 cursor-pointer"
-
             >
-              <option  value="">Select Sex</option>
+              <option value="">Select Sex</option>
               {sexOptions.map((opt) => (
                 <option value={opt} key={opt}>
                   {opt[0].toUpperCase() + opt.slice(1)}
@@ -148,7 +184,9 @@ const RegisterSnakeForm = () => {
         </div>
         <div className="bg-primary-400 md:w-3/4 mx-auto py-6 px-2 rounded-sm mb-10">
           <div className="mb-5">
-            <label className="cursor-pointer font-bold" htmlFor="morph">Morph</label>
+            <label className="cursor-pointer font-bold" htmlFor="morph">
+              Morph
+            </label>
             <input
               type="text"
               id="morph"
@@ -161,7 +199,9 @@ const RegisterSnakeForm = () => {
           </div>
 
           <div className="flex items-center">
-            <label className="font-bold" htmlFor="notes">Notes</label>
+            <label className="font-bold" htmlFor="notes">
+              Notes
+            </label>
             <textarea
               name="notes"
               id="notes"
@@ -174,11 +214,15 @@ const RegisterSnakeForm = () => {
             />
           </div>
         </div>
+        <div>
+          <p className="w-3/4 mx-auto text-xl text-center">{feedBack}</p>
+        </div>
 
         <div>
           <button
             className="bg-primary-600 mr-4 text-black px-2 py-1 cursor-pointer"
             type="submit"
+            disabled={isSubmitting}
           >
             Save New Snake
           </button>
@@ -186,6 +230,7 @@ const RegisterSnakeForm = () => {
             className="bg-primary-200 mr-4 text-black px-2 py-1 cursor-pointer"
             type="button"
             onClick={handleReset}
+            disabled={isSubmitting}
           >
             Reset
           </button>

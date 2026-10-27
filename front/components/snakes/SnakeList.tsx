@@ -1,12 +1,14 @@
 "use client";
-import { useUserInfoStore } from "@/lib/Store";
+import { useSnakeListStore, useUserInfoStore } from "@/lib/Store";
 import { Snake } from "@/lib/types";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const SnakeList = () => {
   const user = useUserInfoStore((state) => state.user);
-  const [snakes, setSnakes] = useState<Snake[] | null>(null);
+ const addSnakesToStore = useSnakeListStore((state) => state.setSnakes)
+ const snakes = useSnakeListStore((state) => state.snakes)
+  // const [snakes, setSnakes] = useState<Snake[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,7 +24,8 @@ const SnakeList = () => {
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/snakes/${user.id}`,
         );
         const data = await res.json();
-        setSnakes(data);
+        // setSnakes(data);
+        addSnakesToStore(data)
       } catch (error) {
         console.error("Failed to fetch snakes:", error);
       } finally {
